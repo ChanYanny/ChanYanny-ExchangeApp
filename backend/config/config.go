@@ -8,12 +8,12 @@ import (
 
 type AppConfig struct {
 	Name string `yaml:"name"`
-	Port int    `yaml:"port"`
+	Port string `yaml:"port"`
 }
 
 type DatabaseConfig struct {
 	Host     string `yaml:"host"`
-	Port     int    `yaml:"port"`
+	Port     string `yaml:"port"`
 	Username string `yaml:"username"`
 	Password string `yaml:"password"`
 	DBName   string `yaml:"dbname"`
