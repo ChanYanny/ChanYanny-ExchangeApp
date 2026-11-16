@@ -3,8 +3,7 @@ app:
   port: :3000
 
 database:
-  host: localhost
-  port: :3306
-  username: root
-  password: 123456
-  dbname: exchange_app_db
+  dsn: root:root@tcp(127.0.0.1:3306)/exchange_app_db?charset=utf8mb4&parseTime=True&loc=Local
+  max_idle_conns: 10
+  max_open_conns: 100
+  
