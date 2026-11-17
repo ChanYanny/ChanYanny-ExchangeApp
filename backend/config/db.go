@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"exchangeapp/global"
+	"exchangeapp/models"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -25,4 +26,8 @@ func initDB() {
 	sqlDB.SetConnMaxLifetime(time.Hour)                    // 连接最大生命周期
 
 	global.DB = db
+
+	if err := db.AutoMigrate(&models.User{}); err != nil {
+		log.Fatalf("Failed to migrate database: %v", err)
+	}
 }
