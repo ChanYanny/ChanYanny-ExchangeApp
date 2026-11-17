@@ -27,7 +27,7 @@ func initDB() {
 
 	global.DB = db
 
-	if err := db.AutoMigrate(&models.User{}); err != nil {
+	if err := db.AutoMigrate(&models.User{}, &models.ExchangeRate{}); err != nil {
 		log.Fatalf("Failed to migrate database: %v", err)
 	}
 }
