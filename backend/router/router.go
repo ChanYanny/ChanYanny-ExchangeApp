@@ -19,6 +19,11 @@ func SetupRouter() *gin.Engine {
 	api.Use(middlewares.AuthMiddleware()) // 下面的路由都需要认证
 	{
 		api.POST("/exchangeRates", controllers.CreateExchangeRate)
+		api.GET("/articles/:id", controllers.GetArticlesByID)
+		api.GET("/articles", controllers.GetArticles)
+		api.POST("/articles", controllers.CreateArticle)
+		api.POST("/articles/:id/likes", controllers.LikeArticle)
+		api.GET("/articles/:id/likes", controllers.GetArticleLikes)
 	}
 	return r
 }
