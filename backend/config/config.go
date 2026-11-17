@@ -16,6 +16,11 @@ type Config struct {
 		MaxIdleConns int    `yaml:"max_idle_conns"`
 		MaxOpenConns int    `yaml:"max_open_conns"`
 	}
+	Redis struct {
+		Addr     string `yaml:"addr"`
+		Password string `yaml:"password"`
+		DB       int    `yaml:"db"`
+	}
 }
 
 var AppConfig *Config
@@ -36,5 +41,5 @@ func InitConfig() {
 	}
 
 	initDB()
-
+	initRedis()
 }
