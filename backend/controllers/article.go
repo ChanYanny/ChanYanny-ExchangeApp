@@ -25,6 +25,11 @@ func CreateArticle(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
+	// 新增后，删除缓存中的数据，确保最新数据
+	if err := global.RedisClient.Del(cacheKey).Err(); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
 	c.JSON(http.StatusCreated, article)
 }
 
