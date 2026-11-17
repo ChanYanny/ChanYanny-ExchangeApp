@@ -21,6 +21,7 @@ func AuthMiddleware() gin.HandlerFunc {
 			ctx.Abort()
 			return
 		}
-		ctx.Set("username", username)
+		ctx.Set("username", username) // 后续中间件可以使用username
+		ctx.Next()
 	}
 }
